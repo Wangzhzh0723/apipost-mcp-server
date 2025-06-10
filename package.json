@@ -1,0 +1,49 @@
+{
+    "name": "apipost-mcp-server",
+    "version": "1.0.0",
+    "description": "A server to fetch API information from APIPost for large language models",
+    "main": "dist/index.js",
+    "type": "module",
+    "bin": {
+        "apipost-mcp-server": "dist/cli.js"
+    },
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "scripts": {
+        "start": "node dist/index.js",
+        "dev": "node src/cli.js",
+        "build": "rollup -c"
+    },
+    "keywords": [
+        "apipost",
+        "api",
+        "llm",
+        "mcp"
+    ],
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Wangzhzh0723/apipost-mcp-server.git"
+    },
+    "author": "jonath",
+    "license": "MIT",
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.12.1",
+        "axios": "^1.6.2",
+        "dotenv": "^16.5.0",
+        "yargs": "^18.0.0",
+        "zod": "^3.25.56"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^25.0.7",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-replace": "^5.0.5",
+        "@rollup/plugin-terser": "^0.4.4",
+        "rollup": "^4.9.6"
+    }
+}
