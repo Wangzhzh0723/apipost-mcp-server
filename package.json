@@ -11,6 +11,9 @@
         "dist",
         "README.md"
     ],
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
     "scripts": {
         "start": "node dist/index.js",
         "dev": "node src/cli.js",
