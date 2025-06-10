@@ -8,6 +8,8 @@
         "apipost-mcp-server": "dist/cli.js"
     },
     "files": [
+        "rollup",
+        ".env",
         "dist",
         "README.md"
     ],
