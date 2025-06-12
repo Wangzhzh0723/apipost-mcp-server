@@ -1,6 +1,6 @@
 {
     "name": "apipost-mcp-server",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "A server to fetch API information from APIPost for large language models",
     "main": "dist/index.js",
     "type": "module",
