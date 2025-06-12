@@ -34,31 +34,32 @@ APIPOST_BASE_URL=https://open.apipost.net
   "mcpServers": {
     "apipost sse mcp": {
       "command": "npx",
-      "args": [
-        "-y",
-        "apipost-mcp-server",
-        "--stdio"
-      ],
+      "args": ["-y", "apipost-mcp-server", "--stdio"],
       "env": {
         "APIPOST_API_TOKEN": "你的APIPost API 项目令牌"
       }
     }
   }
 }
+```
 
 ## 可用工具
 
-服务器提供以下MCP工具：
+服务器提供以下 MCP 工具：
 
 ### get_apipost_api_data
 
-获取APIPost上的API信息。
+获取 APIPost 上的 API 信息。
 
 参数：
-- `issueId`: 文档ID，通常在URL中如 https://doc.apipost.net/docs/detail/<issueId>?...
-- `targetId`: 目标API的ID，通常作为URL参数 target_id=<targetId>
+
+- `issueId`: 文档 ID，通常在 URL 中如 https://doc.apipost.net/docs/detail/<issueId>?...
+- `targetId`: 目标 API 的 ID，通常作为 URL 参数 target_id=<targetId>
 
 ## 许可证
 
 MIT
+
+```
+
 ```
