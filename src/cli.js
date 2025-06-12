@@ -2,13 +2,19 @@
 
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { config } from "dotenv";
-import { resolve } from "path";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 import { getServerConfig } from "./config.js";
 import { startHttpServer } from "./server.js";
 import { createServer } from "./mcp.js";
 
+const currentfile = import.meta.url; // 当前文件的 URL，会以 file:// 协议开头
+const __filename = fileURLToPath(currentfile); // 当前文件绝对路径
+const __dirname = dirname(__filename); // 当前文件所在目录绝对路径
+
 // Load .env from the current working directory
-config({ path: resolve(process.cwd(), ".env") });
+config({ path: resolve(__dirname, "../.env") });
+console.log(process.env.APIPOST_BASE_URL);
 
 export async function startServer() {
   // Check if we're running in stdio mode (e.g., via CLI)
