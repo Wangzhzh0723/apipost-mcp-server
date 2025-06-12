@@ -1,59 +1,64 @@
 # APIPost MCP Server
 
-一个用于从APIPost获取API信息的服务器，专为大型语言模型设计。
+一个用于从 APIPost 获取 API 信息的服务器，专为大型语言模型（LLM）设计，基于 Model Context Protocol (MCP)协议实现。
 
-## 项目说明
+## 功能介绍
 
-这个项目使用Rollup作为构建工具，将TypeScript代码编译为ESM格式的JavaScript。
+APIPost MCP Server 提供了一个中间层服务，允许大型语言模型通过 MCP 协议与 APIPost 平台进行交互，获取 API 文档和详细信息。主要功能包括：
 
-## 安装
-
-```bash
-npm install
-# 或
-yarn
-```
-
-## 开发
-
-```bash
-npm run dev
-# 或
-yarn dev
-```
-
-这将启动开发模式，使用Rollup构建代码并监视文件变化，然后运行CLI。
-
-## 构建
-
-```bash
-npm run build
-# 或
-yarn build
-```
-
-这将使用Rollup构建项目，输出文件将位于`dist`目录中。
-
-## 启动服务器
-
-```bash
-npm start
-# 或
-yarn start
-```
+- 支持通过 issue ID 和 target ID 获取 APIPost 上的 API 详细信息
+- 提供多种连接方式：HTTP、SSE 和标准输入输出(stdio)
+- 支持 MCP 协议的会话管理和进度通知
+- 可作为独立服务运行或集成到其他应用中
 
 ## 配置
 
-项目使用`.env`文件进行配置，请确保在项目根目录创建此文件。
+```
+# APIPost 配置
+APIPOST_API_TOKEN=你的APIPost API令牌
+APIPOST_BASE_URL=https://open.apipost.net
 
-## Rollup配置说明
+```
 
-项目使用Rollup进行构建，主要配置如下：
+### 配置项说明
 
-- 入口文件：`src/index.ts`和`src/cli.ts`
-- 输出格式：ESM
-- 输出目录：`dist`
-- 开发模式下不压缩代码，生产模式下使用terser压缩
-- 支持环境变量注入
+- `APIPOST_API_TOKEN`: 必需，APIPost 的 API 访问令牌，在项目中获取，【项目】=》【项目设置】=》【OpenAPI】=》【新建】
+- `APIPOST_BASE_URL`: APIPost 开放 API 的基础 URL，默认为`https://open.apipost.net`，可选
 
-原tsup配置已转换为等效的Rollup配置，保持了相同的功能。
+## 在 AI 编辑器中配置使用方式
+
+在 AI 编辑器中，如 Cursor、Trae，添加以下配置：
+
+```json
+{
+  "mcpServers": {
+    "apipost sse mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "apipost-mcp-server",
+        "--stdio"
+      ],
+      "env": {
+        "APIPOST_API_TOKEN": "你的APIPost API 项目令牌"
+      }
+    }
+  }
+}
+
+## 可用工具
+
+服务器提供以下MCP工具：
+
+### get_apipost_api_data
+
+获取APIPost上的API信息。
+
+参数：
+- `issueId`: 文档ID，通常在URL中如 https://doc.apipost.net/docs/detail/<issueId>?...
+- `targetId`: 目标API的ID，通常作为URL参数 target_id=<targetId>
+
+## 许可证
+
+MIT
+```
